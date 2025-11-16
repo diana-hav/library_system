@@ -1,0 +1,32 @@
+2025-11-10 13:18:16.404 +02:00 [INF] Now listening on: https://localhost:7146
+2025-11-10 13:18:16.543 +02:00 [INF] Now listening on: http://localhost:5017
+2025-11-10 13:18:16.668 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-10 13:18:16.670 +02:00 [INF] Hosting environment: Development
+2025-11-10 13:18:16.672 +02:00 [INF] Content root path: C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Api
+2025-11-10 13:18:25.476 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5017/ - null null
+2025-11-10 13:18:25.700 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5017/ - 404 0 null 239.2012ms
+2025-11-10 13:18:25.726 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5017/, Response status code: 404
+2025-11-10 13:18:33.852 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7146/ - null null
+2025-11-10 13:18:33.862 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7146/ - 404 0 null 10.5943ms
+2025-11-10 13:18:33.870 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7146/, Response status code: 404
+2025-11-10 13:19:25.842 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5017/ - null null
+2025-11-10 13:19:25.852 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5017/ - 404 0 null 39.5399ms
+2025-11-10 13:19:25.859 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5017/, Response status code: 404
+2025-11-10 13:19:40.674 +02:00 [INF] Request starting HTTP/2 GET https://localhost:7146/ - null null
+2025-11-10 13:19:40.684 +02:00 [INF] Request finished HTTP/2 GET https://localhost:7146/ - 404 0 null 9.7374ms
+2025-11-10 13:19:40.691 +02:00 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET https://localhost:7146/, Response status code: 404
+2025-11-10 20:48:21.213 +02:00 [INF] Now listening on: https://localhost:7146
+2025-11-10 20:48:21.278 +02:00 [INF] Now listening on: http://localhost:5017
+2025-11-10 20:48:21.394 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-10 20:48:21.396 +02:00 [INF] Hosting environment: Development
+2025-11-10 20:48:21.398 +02:00 [INF] Content root path: C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Api
+2025-11-10 20:49:53.210 +02:00 [INF] Now listening on: https://localhost:7146
+2025-11-10 20:49:53.266 +02:00 [INF] Now listening on: http://localhost:5017
+2025-11-10 20:49:53.497 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-10 20:49:53.498 +02:00 [INF] Hosting environment: Development
+2025-11-10 20:49:53.500 +02:00 [INF] Content root path: C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Api
+2025-11-10 20:56:08.325 +02:00 [INF] Now listening on: https://localhost:7146
+2025-11-10 20:56:08.373 +02:00 [INF] Now listening on: http://localhost:5017
+2025-11-10 20:56:08.425 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-10 20:56:08.428 +02:00 [INF] Hosting environment: Development
+2025-11-10 20:56:08.429 +02:00 [INF] Content root path: C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Api

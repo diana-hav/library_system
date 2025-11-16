@@ -1,0 +1,5 @@
+2025-11-16 18:44:19.868 +02:00 [INF] Now listening on: https://localhost:7146
+2025-11-16 18:44:19.917 +02:00 [INF] Now listening on: http://localhost:5017
+2025-11-16 18:44:19.981 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-16 18:44:19.983 +02:00 [INF] Hosting environment: Development
+2025-11-16 18:44:19.985 +02:00 [INF] Content root path: C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Api

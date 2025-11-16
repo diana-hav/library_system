@@ -1,0 +1,17 @@
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\bin\Debug\net9.0\BorrowingService.Bll.deps.json
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\bin\Debug\net9.0\BorrowingService.Bll.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\bin\Debug\net9.0\BorrowingService.Bll.pdb
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\bin\Debug\net9.0\BorrowingService.Dal.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\bin\Debug\net9.0\BorrowingService.Domain.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\bin\Debug\net9.0\BorrowingService.Dal.pdb
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\bin\Debug\net9.0\BorrowingService.Domain.pdb
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\obj\Debug\net9.0\BorrowingService.Bll.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\obj\Debug\net9.0\BorrowingService.Bll.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\obj\Debug\net9.0\BorrowingService.Bll.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\obj\Debug\net9.0\BorrowingService.Bll.AssemblyInfo.cs
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\obj\Debug\net9.0\BorrowingService.Bll.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\obj\Debug\net9.0\Borrowin.19330841.Up2Date
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\obj\Debug\net9.0\BorrowingService.Bll.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\obj\Debug\net9.0\refint\BorrowingService.Bll.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\obj\Debug\net9.0\BorrowingService.Bll.pdb
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Bll\obj\Debug\net9.0\ref\BorrowingService.Bll.dll
