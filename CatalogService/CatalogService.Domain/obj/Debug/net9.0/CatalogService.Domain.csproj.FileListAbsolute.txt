@@ -1,0 +1,12 @@
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\bin\Debug\net9.0\CatalogService.Domain.deps.json
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\bin\Debug\net9.0\CatalogService.Domain.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\bin\Debug\net9.0\CatalogService.Domain.pdb
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\obj\Debug\net9.0\CatalogService.Domain.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\obj\Debug\net9.0\CatalogService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\obj\Debug\net9.0\CatalogService.Domain.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\obj\Debug\net9.0\CatalogService.Domain.AssemblyInfo.cs
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\obj\Debug\net9.0\CatalogService.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\obj\Debug\net9.0\CatalogService.Domain.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\obj\Debug\net9.0\refint\CatalogService.Domain.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\obj\Debug\net9.0\CatalogService.Domain.pdb
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Domain\obj\Debug\net9.0\ref\CatalogService.Domain.dll

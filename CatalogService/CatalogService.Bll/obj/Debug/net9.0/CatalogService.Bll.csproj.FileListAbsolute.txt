@@ -1,0 +1,17 @@
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\bin\Debug\net9.0\CatalogService.Bll.deps.json
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\bin\Debug\net9.0\CatalogService.Bll.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\bin\Debug\net9.0\CatalogService.Bll.pdb
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\bin\Debug\net9.0\CatalogService.Dal.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\bin\Debug\net9.0\CatalogService.Domain.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\bin\Debug\net9.0\CatalogService.Dal.pdb
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\bin\Debug\net9.0\CatalogService.Domain.pdb
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\obj\Debug\net9.0\CatalogService.Bll.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\obj\Debug\net9.0\CatalogService.Bll.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\obj\Debug\net9.0\CatalogService.Bll.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\obj\Debug\net9.0\CatalogService.Bll.AssemblyInfo.cs
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\obj\Debug\net9.0\CatalogService.Bll.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\obj\Debug\net9.0\CatalogS.A7660A0A.Up2Date
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\obj\Debug\net9.0\CatalogService.Bll.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\obj\Debug\net9.0\refint\CatalogService.Bll.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\obj\Debug\net9.0\CatalogService.Bll.pdb
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Bll\obj\Debug\net9.0\ref\CatalogService.Bll.dll
