@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BorrowingService",
+    "\\BorrowingService\\BorrowingService.Api",
+    "\\BorrowingService\\BorrowingService.Api\\Controllers",
+    "\\BorrowingService\\BorrowingService.Dal",
+    "\\CatalogService",
+    "\\CatalogService\\CatalogService.Api",
+    "\\CatalogService\\CatalogService.Api\\Validators"
+  ],
+  "SelectedNode": "\\CatalogService\\CatalogService.Api\\Validators",
+  "PreviewInSolutionExplorer": false
+}
