@@ -1,0 +1,32 @@
+2025-11-22 15:04:40.368 +02:00 [INF] Now listening on: http://localhost:5017
+2025-11-22 15:04:40.448 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-11-22 15:04:40.451 +02:00 [INF] Hosting environment: Development
+2025-11-22 15:04:40.453 +02:00 [INF] Content root path: C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Api
+2025-11-22 15:04:56.511 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5017/api/readers - null null
+2025-11-22 15:04:56.580 +02:00 [INF] Executing endpoint 'BorrowingService.Api.Controllers.ReadersController.GetAll (BorrowingService.Api)'
+2025-11-22 15:04:56.615 +02:00 [INF] Route matched with {action = "GetAll", controller = "Readers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller BorrowingService.Api.Controllers.ReadersController (BorrowingService.Api).
+2025-11-22 15:04:57.439 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[BorrowingService.Bll.Dtos.ReaderDto, BorrowingService.Bll, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-22 15:04:57.499 +02:00 [INF] Executed action BorrowingService.Api.Controllers.ReadersController.GetAll (BorrowingService.Api) in 874.1462ms
+2025-11-22 15:04:57.504 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5017/api/readers - null null
+2025-11-22 15:04:57.529 +02:00 [INF] Executed endpoint 'BorrowingService.Api.Controllers.ReadersController.GetAll (BorrowingService.Api)'
+2025-11-22 15:04:57.534 +02:00 [INF] Executing endpoint 'BorrowingService.Api.Controllers.ReadersController.GetAll (BorrowingService.Api)'
+2025-11-22 15:04:57.537 +02:00 [INF] Route matched with {action = "GetAll", controller = "Readers"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller BorrowingService.Api.Controllers.ReadersController (BorrowingService.Api).
+2025-11-22 15:04:57.538 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5017/api/readers - 200 null application/json; charset=utf-8 1028.9565ms
+2025-11-22 15:04:57.545 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[BorrowingService.Bll.Dtos.ReaderDto, BorrowingService.Bll, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-22 15:04:57.550 +02:00 [INF] Executed action BorrowingService.Api.Controllers.ReadersController.GetAll (BorrowingService.Api) in 8.8159ms
+2025-11-22 15:04:57.553 +02:00 [INF] Executed endpoint 'BorrowingService.Api.Controllers.ReadersController.GetAll (BorrowingService.Api)'
+2025-11-22 15:04:57.555 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5017/api/readers - 200 null application/json; charset=utf-8 51.4765ms
+2025-11-22 15:04:59.703 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5017/api/borrowings - null null
+2025-11-22 15:04:59.710 +02:00 [INF] Executing endpoint 'BorrowingService.Api.Controllers.BorrowingsController.GetAll (BorrowingService.Api)'
+2025-11-22 15:04:59.717 +02:00 [INF] Route matched with {action = "GetAll", controller = "Borrowings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller BorrowingService.Api.Controllers.BorrowingsController (BorrowingService.Api).
+2025-11-22 15:04:59.773 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[BorrowingService.Bll.Dtos.BorrowingDto, BorrowingService.Bll, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-22 15:04:59.786 +02:00 [INF] Executed action BorrowingService.Api.Controllers.BorrowingsController.GetAll (BorrowingService.Api) in 66.2441ms
+2025-11-22 15:04:59.789 +02:00 [INF] Executed endpoint 'BorrowingService.Api.Controllers.BorrowingsController.GetAll (BorrowingService.Api)'
+2025-11-22 15:04:59.790 +02:00 [INF] Request starting HTTP/1.1 GET http://localhost:5017/api/borrowings - null null
+2025-11-22 15:04:59.791 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5017/api/borrowings - 200 null application/json; charset=utf-8 87.3656ms
+2025-11-22 15:04:59.795 +02:00 [INF] Executing endpoint 'BorrowingService.Api.Controllers.BorrowingsController.GetAll (BorrowingService.Api)'
+2025-11-22 15:04:59.803 +02:00 [INF] Route matched with {action = "GetAll", controller = "Borrowings"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAll() on controller BorrowingService.Api.Controllers.BorrowingsController (BorrowingService.Api).
+2025-11-22 15:04:59.807 +02:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[BorrowingService.Bll.Dtos.BorrowingDto, BorrowingService.Bll, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2025-11-22 15:04:59.809 +02:00 [INF] Executed action BorrowingService.Api.Controllers.BorrowingsController.GetAll (BorrowingService.Api) in 3.5609ms
+2025-11-22 15:04:59.812 +02:00 [INF] Executed endpoint 'BorrowingService.Api.Controllers.BorrowingsController.GetAll (BorrowingService.Api)'
+2025-11-22 15:04:59.813 +02:00 [INF] Request finished HTTP/1.1 GET http://localhost:5017/api/borrowings - 200 null application/json; charset=utf-8 23.0517ms

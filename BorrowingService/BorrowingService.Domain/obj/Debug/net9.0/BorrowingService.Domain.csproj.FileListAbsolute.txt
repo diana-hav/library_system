@@ -9,3 +9,4 @@ C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingServic
 C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Domain\obj\Debug\net9.0\refint\BorrowingService.Domain.dll
 C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Domain\obj\Debug\net9.0\BorrowingService.Domain.pdb
 C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Domain\obj\Debug\net9.0\ref\BorrowingService.Domain.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\BorrowingService\BorrowingService.Domain\obj\Debug\net9.0\BorrowingService.Domain.sourcelink.json

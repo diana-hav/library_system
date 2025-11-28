@@ -1,17 +1,18 @@
 using AutoMapper;
 using BorrowingService.Bll.Mapping;
 using BorrowingService.Bll.Services;
+using BorrowingService.Dal;
 using BorrowingService.Dal.Interfaces;
 using BorrowingService.Dal.Repositories;
 using BorrowingService.Api.Middleware;
+using Npgsql;
 using Serilog;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Connection string
 var connStr = builder.Configuration.GetConnectionString("DefaultConnection");
 
+// Logger
 Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .WriteTo.Console()
@@ -19,36 +20,55 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Host.UseSerilog();
-builder.Services.AddScoped<IReaderRepository>(_ => new ReaderRepository(connStr!));
+
+// Scoped NpgsqlConnection
+builder.Services.AddScoped<NpgsqlConnection>(_ =>
+{
+    var conn = new NpgsqlConnection(connStr);
+    conn.Open();
+    return conn;
+});
+
+// Repositories
+builder.Services.AddScoped<IReaderRepository, ReaderRepository>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBorrowingRepository, BorrowingRepository>();
+
+// UnitOfWork
+builder.Services.AddScoped<IUnitOfWork>(sp =>
+{
+    var conn = sp.GetRequiredService<NpgsqlConnection>();
+    var books = sp.GetRequiredService<IBookRepository>();
+    var borrowings = sp.GetRequiredService<IBorrowingRepository>();
+    var readers = sp.GetRequiredService<IReaderRepository>();
+    return new UnitOfWork(conn, books, borrowings, readers);
+});
+
+// BLL Services
 builder.Services.AddScoped<ReaderService>();
-builder.Services.AddScoped<BookService>(sp =>
-    new BookService(connStr!, sp.GetRequiredService<IMapper>()));
+builder.Services.AddScoped<BookService>();
+builder.Services.AddScoped<BorrowingAppService>();
+
+// AutoMapper
 builder.Services.AddAutoMapper(typeof(BorrowingProfile));
+
+// HttpClient для CatalogService
+builder.Services.AddHttpClient("catalog", client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["CatalogService:BaseUrl"] ?? "http://localhost:5180");
+});
+
+// Controllers + JSON options
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
     });
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSwaggerGen(c =>
-{
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
-    {
-        Title = "Borrowing Service API",
-        Version = "v1",
-        Description = "API ��� ������ �� ���������� ���� � ��������",
-        Contact = new Microsoft.OpenApi.Models.OpenApiContact
-        {
-            Name = "Library System Team",
-            Email = "support@library.local"
-        }
-    });
-});
-builder.Services.AddScoped<BorrowingAppService>(sp =>
-    new BorrowingAppService(connStr!, sp.GetRequiredService<IMapper>()));
 
-// Add CORS
+// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>

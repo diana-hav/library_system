@@ -1,38 +1,56 @@
-using BorrowingService.Bll.Dtos;
-using BorrowingService.Domain.Entities;
-using Dapper;
-using Npgsql;
 using AutoMapper;
+using BorrowingService.Bll.Dtos;
+using BorrowingService.Dal.Interfaces;
+using BorrowingService.Domain.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace BorrowingService.Bll.Services;
-
-public class BookService
+namespace BorrowingService.Bll.Services
 {
-    private readonly string _connectionString;
-    private readonly IMapper _mapper;
-
-    public BookService(string connectionString, IMapper mapper)
+    public class BookService
     {
-        _connectionString = connectionString;
-        _mapper = mapper;
-    }
+        private readonly IUnitOfWork _uow;
+        private readonly IMapper _mapper;
 
-    public async Task<IEnumerable<BookDto>> GetAllAsync()
-    {
-        await using var conn = new NpgsqlConnection(_connectionString);
-        await conn.OpenAsync();
-        var sql = "SELECT id, title, author_name, is_available FROM books ORDER BY title;";
-        var books = await conn.QueryAsync<Book>(sql);
-        return _mapper.Map<IEnumerable<BookDto>>(books);
-    }
+        public BookService(IUnitOfWork uow, IMapper mapper)
+        {
+            _uow = uow;
+            _mapper = mapper;
+        }
 
-    public async Task<BookDto?> GetByIdAsync(int id)
-    {
-        await using var conn = new NpgsqlConnection(_connectionString);
-        await conn.OpenAsync();
-        var sql = "SELECT id, title, author_name, is_available FROM books WHERE id=@id;";
-        var book = await conn.QuerySingleOrDefaultAsync<Book>(sql, new { id });
-        return book != null ? _mapper.Map<BookDto>(book) : null;
+        public async Task<IEnumerable<BookDto>> GetAllAsync()
+        {
+            var books = await _uow.Books.GetAllAsync();
+            return _mapper.Map<IEnumerable<BookDto>>(books);
+        }
+
+        public async Task<BookDto?> GetByIdAsync(int id)
+        {
+            var book = await _uow.Books.GetByIdAsync(id);
+            return _mapper.Map<BookDto?>(book);
+        }
+
+        public async Task<int> CreateAsync(string title, string author)
+        {
+            await _uow.BeginTransactionAsync();
+            var id = await _uow.Books.CreateBookAsync(title, author);
+            await _uow.CommitAsync();
+            return id;
+        }
+
+        public async Task<bool> SetAvailabilityAsync(int id, bool available)
+        {
+            await _uow.BeginTransactionAsync();
+            var affected = await _uow.Books.SetAvailabilityAsync(id, available);
+
+            if (affected > 0)
+            {
+                await _uow.CommitAsync();
+                return true;
+            }
+
+            await _uow.RollbackAsync();
+            return false;
+        }
     }
 }
-

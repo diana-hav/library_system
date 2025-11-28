@@ -1,52 +1,65 @@
-﻿using BorrowingService.Dal.Interfaces;
-using BorrowingService.Dal.Repositories;
+﻿using System;
+using System.Threading.Tasks;
+using BorrowingService.Dal.Interfaces;
 using Npgsql;
 
-namespace BorrowingService.Dal;
-
-public class UnitOfWork : IDisposable
+namespace BorrowingService.Dal
 {
-    private readonly NpgsqlConnection _connection;
-    private NpgsqlTransaction? _transaction;
-
-    public IBookRepository Books { get; private set; }
-    public IBorrowingRepository Borrowings { get; private set; }
-
-    public UnitOfWork(string connectionString)
+    public class UnitOfWork : IUnitOfWork
     {
-        _connection = new NpgsqlConnection(connectionString);
-        _connection.Open();
-        _transaction = _connection.BeginTransaction();
+        private readonly NpgsqlConnection _connection;
+        private NpgsqlTransaction? _transaction;
 
-        Books = new BookRepository(_connection, _transaction);
-        Borrowings = new BorrowingRepository(_connection, _transaction);
-    }
+        public IBookRepository Books { get; }
+        public IBorrowingRepository Borrowings { get; }
+        public IReaderRepository Readers { get; }
 
-    public async Task CommitAsync()
-    {
-        if (_transaction != null)
+        public UnitOfWork(
+            NpgsqlConnection connection,
+            IBookRepository books,
+            IBorrowingRepository borrowings,
+            IReaderRepository readers)
         {
+            _connection = connection;
+            Books = books;
+            Borrowings = borrowings;
+            Readers = readers;
+        }
+
+        public async Task BeginTransactionAsync()
+        {
+            if (_connection.State != System.Data.ConnectionState.Open)
+                await _connection.OpenAsync();
+
+            _transaction = await _connection.BeginTransactionAsync();
+
+            if (Books is ITransactionalRepository tb) tb.SetTransaction(_transaction);
+            if (Borrowings is ITransactionalRepository tbr) tbr.SetTransaction(_transaction);
+            if (Readers is ITransactionalRepository tr) tr.SetTransaction(_transaction);
+        }
+
+        public async Task CommitAsync()
+        {
+            if (_transaction == null) throw new InvalidOperationException("Transaction not started");
             await _transaction.CommitAsync();
             await _connection.CloseAsync();
             _transaction.Dispose();
             _transaction = null;
         }
-    }
 
-    public async Task RollbackAsync()
-    {
-        if (_transaction != null)
+        public async Task RollbackAsync()
         {
+            if (_transaction == null) return;
             await _transaction.RollbackAsync();
             await _connection.CloseAsync();
             _transaction.Dispose();
             _transaction = null;
         }
-    }
 
-    public void Dispose()
-    {
-        _transaction?.Dispose();
-        _connection.Dispose();
+        public void Dispose()
+        {
+            _transaction?.Dispose();
+            _connection?.Dispose();
+        }
     }
 }
