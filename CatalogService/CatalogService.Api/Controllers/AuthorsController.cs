@@ -13,12 +13,24 @@ public class AuthorsController : ControllerBase
     public AuthorsController(AuthorService service) => _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
+    [ProducesResponseType(typeof(IEnumerable<AuthorDto>), 200)]
+    public async Task<ActionResult<IEnumerable<AuthorDto>>> GetAll()
+    {
+        var authors = await _service.GetAllAsync();
+        return Ok(authors);
+    }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] AuthorDto dto)
+    [ProducesResponseType(typeof(AuthorDto), 201)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(409)]
+    public async Task<ActionResult<AuthorDto>> Create([FromBody] AuthorDto dto)
     {
-        var id = await _service.CreateAsync(dto);
-        return CreatedAtAction(nameof(GetAll), new { id }, dto);
+        var createdDto = await _service.CreateAsync(dto);
+
+        if (createdDto == null)
+            return BadRequest();
+
+        return CreatedAtAction(nameof(GetAll), new { id = createdDto.Id }, createdDto);
     }
 }

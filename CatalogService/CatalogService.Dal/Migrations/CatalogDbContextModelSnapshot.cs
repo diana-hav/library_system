@@ -25,17 +25,20 @@ namespace CatalogService.Dal.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("name");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Authors");
+                    b.ToTable("authors", (string)null);
 
                     b.HasData(
                         new
@@ -59,19 +62,24 @@ namespace CatalogService.Dal.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AuthorId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("authorid");
 
                     b.Property<int>("GenreId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("genreid");
 
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)")
+                        .HasColumnName("title");
 
                     b.HasKey("Id");
 
@@ -79,7 +87,7 @@ namespace CatalogService.Dal.Migrations
 
                     b.HasIndex("GenreId");
 
-                    b.ToTable("Books");
+                    b.ToTable("books", (string)null);
 
                     b.HasData(
                         new
@@ -109,17 +117,20 @@ namespace CatalogService.Dal.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)")
+                        .HasColumnName("name");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Genres");
+                    b.ToTable("genres", (string)null);
 
                     b.HasData(
                         new
@@ -144,13 +155,13 @@ namespace CatalogService.Dal.Migrations
                     b.HasOne("CatalogService.Domain.Entities.Author", "Author")
                         .WithMany("Books")
                         .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("CatalogService.Domain.Entities.Genre", "Genre")
                         .WithMany("Books")
                         .HasForeignKey("GenreId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Author");

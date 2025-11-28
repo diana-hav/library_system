@@ -240,6 +240,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "Ardalis.Specification.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.3.1, )"
+            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",

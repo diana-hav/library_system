@@ -7,46 +7,56 @@ using FluentValidation.AspNetCore;
 using Hellang.Middleware.ProblemDetails;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Logger
 Log.Logger = new LoggerConfiguration()
     .WriteTo.Console()
     .WriteTo.File("Logs/catalog.log", rollingInterval: RollingInterval.Day)
     .CreateLogger();
-
 builder.Host.UseSerilog();
 
+// DbContext
 var connStr = builder.Configuration.GetConnectionString("DefaultConnection");
-
 builder.Services.AddDbContext<CatalogDbContext>(opt =>
     opt.UseNpgsql(connStr));
 
+// UnitOfWork & Services
 builder.Services.AddScoped<UnitOfWork>();
 builder.Services.AddScoped<AuthorService>();
 builder.Services.AddScoped<GenreService>();
 builder.Services.AddScoped<BookService>();
 builder.Services.AddAutoMapper(typeof(CatalogProfile).Assembly);
 
+// FluentValidation
 builder.Services.AddValidatorsFromAssemblyContaining<CreateBookValidator>();
 builder.Services.AddFluentValidationAutoValidation();
 builder.Services.AddFluentValidationClientsideAdapters();
 
+// ProblemDetails
 builder.Services.AddProblemDetails(options =>
 {
     options.IncludeExceptionDetails = (ctx, ex) => builder.Environment.IsDevelopment();
+
+    // Map exceptions to status codes
+    options.Map<KeyNotFoundException>(ex => new StatusCodeProblemDetails(StatusCodes.Status404NotFound));
+    options.Map<ArgumentException>(ex => new StatusCodeProblemDetails(StatusCodes.Status400BadRequest));
+    options.Map<InvalidOperationException>(ex => new StatusCodeProblemDetails(StatusCodes.Status409Conflict));
 });
 
+// Controllers + JSON options
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase;
     });
+
+// Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Add CORS
+// CORS
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend", policy =>
@@ -60,8 +70,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-app.UseMiddleware<CatalogService.Api.Middleware.ErrorMiddleware>();
-
+// Correct order: ProblemDetails first
 app.UseProblemDetails();
 
 if (app.Environment.IsDevelopment())

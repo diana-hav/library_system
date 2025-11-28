@@ -13,12 +13,24 @@ public class GenresController : ControllerBase
     public GenresController(GenreService service) => _service = service;
 
     [HttpGet]
-    public async Task<IActionResult> GetAll() => Ok(await _service.GetAllAsync());
+    [ProducesResponseType(typeof(IEnumerable<GenreDto>), 200)]
+    public async Task<ActionResult<IEnumerable<GenreDto>>> GetAll()
+    {
+        var genres = await _service.GetAllAsync();
+        return Ok(genres);
+    }
 
     [HttpPost]
-    public async Task<IActionResult> Create([FromBody] GenreDto dto)
+    [ProducesResponseType(typeof(GenreDto), 201)]
+    [ProducesResponseType(400)]
+    [ProducesResponseType(409)]
+    public async Task<ActionResult<GenreDto>> Create([FromBody] GenreDto dto)
     {
-        var id = await _service.CreateAsync(dto);
-        return CreatedAtAction(nameof(GetAll), new { id }, dto);
+        var createdDto = await _service.CreateAsync(dto);
+
+        if (createdDto == null)
+            return BadRequest();
+
+        return CreatedAtAction(nameof(GetAll), new { id = createdDto.Id }, createdDto);
     }
 }

@@ -1,15 +1,72 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Ardalis.Specification;
+using Ardalis.Specification.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
-namespace CatalogService.Dal.Repositories;
-
-public class GenericRepository<T> where T : class
+namespace CatalogService.Dal.Repositories
 {
-    private readonly CatalogDbContext _context;
-    public GenericRepository(CatalogDbContext context) => _context = context;
+    public class GenericRepository<T> : IRepository<T> where T : class
+    {
+        protected readonly DbContext _context;
+        protected readonly DbSet<T> _dbSet;
 
-    public async Task<IEnumerable<T>> GetAllAsync() => await _context.Set<T>().ToListAsync();
-    public async Task<T?> GetByIdAsync(int id) => await _context.Set<T>().FindAsync(id);
-    public async Task AddAsync(T entity) => await _context.Set<T>().AddAsync(entity);
-    public void Update(T entity) => _context.Set<T>().Update(entity);
-    public void Delete(T entity) => _context.Set<T>().Remove(entity);
+        public GenericRepository(DbContext context)
+        {
+            _context = context;
+            _dbSet = context.Set<T>();
+        }
+
+        public async Task<T?> GetByIdAsync(int id, CancellationToken cancellationToken = default)
+        {
+            return await _dbSet.FindAsync(new object[] { id }, cancellationToken);
+        }
+
+        public async Task<T?> GetBySpecAsync(ISpecification<T> spec, CancellationToken cancellationToken = default)
+        {
+            return await ApplySpecification(spec).FirstOrDefaultAsync(cancellationToken);
+        }
+
+        public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default)
+        {
+            return await _dbSet.ToListAsync(cancellationToken);
+        }
+
+        public async Task<List<T>> ListAsync(ISpecification<T> spec, CancellationToken cancellationToken = default)
+        {
+            return await ApplySpecification(spec).ToListAsync(cancellationToken);
+        }
+
+        public async Task<int> CountAsync(ISpecification<T> spec, CancellationToken cancellationToken = default)
+        {
+            return await ApplySpecification(spec).CountAsync(cancellationToken);
+        }
+
+        public async Task AddAsync(T entity, CancellationToken cancellationToken = default)
+        {
+            await _dbSet.AddAsync(entity, cancellationToken);
+        }
+
+        public void Update(T entity)
+        {
+            _dbSet.Update(entity);
+        }
+
+        public void Delete(T entity)
+        {
+            _dbSet.Remove(entity);
+        }
+
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            return await _context.SaveChangesAsync(cancellationToken);
+        }
+
+        protected IQueryable<T> ApplySpecification(ISpecification<T> spec)
+        {
+            return SpecificationEvaluator.Default.GetQuery(_dbSet.AsQueryable(), spec);
+        }
+    }
 }

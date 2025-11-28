@@ -8,67 +8,67 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CatalogService.Dal.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class UpdateBookTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Authors",
+                name: "authors",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Authors", x => x.Id);
+                    table.PrimaryKey("PK_authors", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Genres",
+                name: "genres",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false)
+                    name = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Genres", x => x.Id);
+                    table.PrimaryKey("PK_genres", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Books",
+                name: "books",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "integer", nullable: false)
+                    id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Title = table.Column<string>(type: "text", nullable: false),
-                    AuthorId = table.Column<int>(type: "integer", nullable: false),
-                    GenreId = table.Column<int>(type: "integer", nullable: false)
+                    title = table.Column<string>(type: "character varying(200)", maxLength: 200, nullable: false),
+                    authorid = table.Column<int>(type: "integer", nullable: false),
+                    genreid = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Books", x => x.Id);
+                    table.PrimaryKey("PK_books", x => x.id);
                     table.ForeignKey(
-                        name: "FK_Books_Authors_AuthorId",
-                        column: x => x.AuthorId,
-                        principalTable: "Authors",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_books_authors_authorid",
+                        column: x => x.authorid,
+                        principalTable: "authors",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Books_Genres_GenreId",
-                        column: x => x.GenreId,
-                        principalTable: "Genres",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        name: "FK_books_genres_genreid",
+                        column: x => x.genreid,
+                        principalTable: "genres",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
-                table: "Authors",
-                columns: new[] { "Id", "Name" },
+                table: "authors",
+                columns: new[] { "id", "name" },
                 values: new object[,]
                 {
                     { 1, "Тарас Шевченко" },
@@ -77,8 +77,8 @@ namespace CatalogService.Dal.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Genres",
-                columns: new[] { "Id", "Name" },
+                table: "genres",
+                columns: new[] { "id", "name" },
                 values: new object[,]
                 {
                     { 1, "Поезія" },
@@ -87,8 +87,8 @@ namespace CatalogService.Dal.Migrations
                 });
 
             migrationBuilder.InsertData(
-                table: "Books",
-                columns: new[] { "Id", "AuthorId", "GenreId", "Title" },
+                table: "books",
+                columns: new[] { "id", "authorid", "genreid", "title" },
                 values: new object[,]
                 {
                     { 1, 1, 1, "Кобзар" },
@@ -97,27 +97,27 @@ namespace CatalogService.Dal.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Books_AuthorId",
-                table: "Books",
-                column: "AuthorId");
+                name: "IX_books_authorid",
+                table: "books",
+                column: "authorid");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Books_GenreId",
-                table: "Books",
-                column: "GenreId");
+                name: "IX_books_genreid",
+                table: "books",
+                column: "genreid");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Books");
+                name: "books");
 
             migrationBuilder.DropTable(
-                name: "Authors");
+                name: "authors");
 
             migrationBuilder.DropTable(
-                name: "Genres");
+                name: "genres");
         }
     }
 }

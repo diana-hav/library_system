@@ -1,0 +1,133 @@
+[
+  {
+    "ContainingType": "CatalogService.Api.Controllers.AuthorsController",
+    "Method": "GetAll",
+    "RelativePath": "api/Authors",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CatalogService.Api.Controllers.AuthorsController",
+    "Method": "Create",
+    "RelativePath": "api/Authors",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "CatalogService.Bll.Dtos.AuthorDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CatalogService.Api.Controllers.BooksController",
+    "Method": "GetAll",
+    "RelativePath": "api/Books",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CatalogService.Api.Controllers.BooksController",
+    "Method": "Create",
+    "RelativePath": "api/Books",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "CatalogService.Bll.Dtos.CreateBookDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CatalogService.Api.Controllers.BooksController",
+    "Method": "GetById",
+    "RelativePath": "api/Books/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CatalogService.Api.Controllers.BooksController",
+    "Method": "Update",
+    "RelativePath": "api/Books/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "UpdateBookDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CatalogService.Api.Controllers.BooksController",
+    "Method": "Delete",
+    "RelativePath": "api/Books/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CatalogService.Api.Controllers.GenresController",
+    "Method": "GetAll",
+    "RelativePath": "api/Genres",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CatalogService.Api.Controllers.GenresController",
+    "Method": "Create",
+    "RelativePath": "api/Genres",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "CatalogService.Bll.Dtos.GenreDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

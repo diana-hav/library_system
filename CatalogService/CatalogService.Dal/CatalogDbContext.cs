@@ -13,7 +13,7 @@ public class CatalogDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(typeof(CatalogDbContext).Assembly);
+        modelBuilder.ApplyConfigurationsFromAssembly(typeof(Domain.Entities.Book).Assembly);
         CatalogService.Dal.Seed.CatalogSeeder.Seed(modelBuilder);
     }
 

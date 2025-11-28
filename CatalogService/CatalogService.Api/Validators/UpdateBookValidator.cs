@@ -18,3 +18,6 @@ public class UpdateBookValidator : AbstractValidator<UpdateBookDto>
             .GreaterThan(0).WithMessage("Потрібно вказати дійсний жанр");
     }
 }
+
+
+

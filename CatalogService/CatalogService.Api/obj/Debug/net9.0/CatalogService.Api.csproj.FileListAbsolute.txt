@@ -151,3 +151,6 @@ C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Ap
 C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Api\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Api\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Api\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Api\obj\Debug\net9.0\CatalogService.Api.sourcelink.json
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Api\bin\Debug\net9.0\Ardalis.Specification.dll
+C:\Users\Admin\Documents\projects\LibrarySystem\CatalogService\CatalogService.Api\bin\Debug\net9.0\Ardalis.Specification.EntityFrameworkCore.dll

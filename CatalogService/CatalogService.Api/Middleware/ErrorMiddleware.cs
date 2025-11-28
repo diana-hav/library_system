@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using Microsoft.AspNetCore.Mvc;
+using System.Net;
 using System.Text.Json;
 
 namespace CatalogService.Api.Middleware;
@@ -22,17 +23,34 @@ public class ErrorMiddleware
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Unhandled error");
-            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
-            context.Response.ContentType = "application/json";
-
-            var problem = new
+            var statusCode = ex switch
             {
-                title = "Internal Server Error",
-                detail = ex.Message,
-                status = context.Response.StatusCode
+                KeyNotFoundException => HttpStatusCode.NotFound,
+                ArgumentException => HttpStatusCode.BadRequest,
+                InvalidOperationException => HttpStatusCode.Conflict,
+                _ => HttpStatusCode.InternalServerError
             };
-            await context.Response.WriteAsync(JsonSerializer.Serialize(problem));
+
+            _logger.LogError(ex, "Unhandled exception with status {StatusCode}", (int)statusCode);
+
+            var problem = new ProblemDetails
+            {
+                Title = "An error occurred",
+                Status = (int)statusCode,
+                Detail = ex.Message,
+                Type = "https://datatracker.ietf.org/doc/html/rfc7807",
+                Instance = context.Request.Path
+            };
+
+            context.Response.ContentType = "application/problem+json";
+            context.Response.StatusCode = (int)statusCode;
+
+            var json = JsonSerializer.Serialize(problem, new JsonSerializerOptions
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            });
+
+            await context.Response.WriteAsync(json);
         }
     }
 }
